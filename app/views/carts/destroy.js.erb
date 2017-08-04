@@ -1,4 +1,3 @@
-//$('table').css({'background-color':'#18ff88'}).animate({'background-color':'#014411'}, 10000);
-$('.main').css({'background-color':'#88ff88'}).animate({'background-color':'#FFFF'}, 10000);
-<%= puts "oi" %>
-//$('.total_line').css({'background-color':'#88ff88'}).animate({'background-color':'#0000'}, 10000);
+$('#cart').show('blind', 1000);
+
+$('#cart').html("<%=j render(@cart) %>");
