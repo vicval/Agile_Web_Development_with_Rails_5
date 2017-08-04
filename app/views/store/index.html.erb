@@ -8,7 +8,12 @@
 <% cache @products do %>
 	<% @products.each do |product| %>
 		<% cache product do %>
-		 	<div class="entry">
+		 	<!--<div class="entry">-->
+		 	<% if product == @current_product %>
+				<div class="entry produto_destacado">
+			<% else %>
+				<div class="entry">
+			<% end %>
 
 			    <%= link_to image_tag(product.image_url), line_items_path(product_id: product), method: :create %>	
 
