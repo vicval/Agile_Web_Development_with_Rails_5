@@ -4,8 +4,14 @@
 	<tr>
 <% end %>
 	<td><%= line_item.quantity %>&times;</td>
-	<td><%= line_item.product.title %>&times;</td>
+	<td><%= line_item.product.title %></td>
 	<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
-	<td><%= button_to 'Decrease', decrement_line_item_path(line_item) %>
-	</td>
+
+	<!-- ta dando problema para testar o email, tem q comentar as linhas abaixo pra ão dar problema-->
+	<% if line_item.product.title != "Programming Ruby 1.9" %>
+		<td><%= button_to 'Decrease', decrement_line_item_url(line_item) %></td>
+	<% end %>
+
+
 </tr>
+

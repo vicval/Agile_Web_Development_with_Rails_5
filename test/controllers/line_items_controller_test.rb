@@ -23,7 +23,7 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
 
     assert_select 'h2', 'Your Cart'
-    assert_select 'td', "Programming Ruby 1.9"
+    assert_select 'td:nth-child(2)', "Programming Ruby 1.9"
     #deu problema na linha de cima pois eu tinha usado aspas simples...e soh funciona com aspas duplas...WHAAATTT
   end
 
