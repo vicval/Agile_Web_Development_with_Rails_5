@@ -14,7 +14,13 @@ Rails.application.routes.draw do
 
   #get 'sessions/destroy'
 
-  resources :users
+  resources :users do
+    member do
+      get 'validate' => :validate
+      post 'validate' => :edit
+    end
+  end
+
   resources :orders
   resources :line_items do
   	member do

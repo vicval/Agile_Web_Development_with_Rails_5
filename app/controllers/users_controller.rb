@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy,:validate]
 
   # GET /users
   # GET /users.json
@@ -19,6 +19,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    user = User.find_by(name: params[:name])
+    if user.try(:authenticate, params[:password])
+      #session[:user_id] = user.id
+      #redirect_to admin_url
+    else
+      redirect_to validate_user_path, alert:"Invalid user/password combination"
+    end
   end
 
   # POST /users
@@ -74,5 +81,8 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :password, :password_confirmation)
+    end
+
+    def validate      
     end
 end
