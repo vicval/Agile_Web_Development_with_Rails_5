@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     user = User.find_by(name: params[:name])
-    if user.try(:authenticate, params[:password])
+    if user.try(:authenticate, params[:password]) || User.count == 0
       #session[:user_id] = user.id
       #redirect_to admin_url
     else
